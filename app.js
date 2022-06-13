@@ -4518,6 +4518,15 @@ var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm_explorations$markdown$Markdown$defaultOptions = {
 	defaultHighlighting: $elm$core$Maybe$Nothing,
 	githubFlavored: $elm$core$Maybe$Just(
@@ -4538,8 +4547,29 @@ var $author$project$Blog$content = A2($elm_explorations$markdown$Markdown$toHtml
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $author$project$Blog$view = A2(
 	$elm$html$Html$div,
-	_List_Nil,
 	_List_fromArray(
-		[$author$project$Blog$content]));
+		[
+			$elm$html$Html$Attributes$class('section')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('container')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('content')
+						]),
+					_List_fromArray(
+						[$author$project$Blog$content]))
+				]))
+		]));
 var $author$project$Blog$main = $author$project$Blog$view;
 _Platform_export({'Blog':{'init':_VirtualDom_init($author$project$Blog$main)(0)(0)}});}(this));

@@ -3,6 +3,7 @@ import Html exposing (div)
 import Html exposing (text)
 import Html.Attributes exposing (style)
 import Markdown
+import Html.Attributes exposing (class)
 
 content =
     Markdown.toHtml [] """
@@ -10,6 +11,10 @@ content =
 """
 
 view = 
-    div [] [content]
+    div [class "section"] [
+        div [class "container"] [
+            div [class "content"] [content]
+        ]
+    ]
 
 main = view
