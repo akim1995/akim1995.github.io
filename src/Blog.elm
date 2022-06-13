@@ -1,7 +1,5 @@
 module Blog exposing (main)
 import Html exposing (div)
-import Html exposing (text)
-import Html.Attributes exposing (style)
 import Markdown
 import Html.Attributes exposing (class)
 
