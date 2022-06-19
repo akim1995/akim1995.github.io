@@ -6355,15 +6355,54 @@ var $elm_explorations$markdown$Markdown$toHtmlWith = _Markdown_toHtml;
 var $elm_explorations$markdown$Markdown$toHtml = $elm_explorations$markdown$Markdown$toHtmlWith($elm_explorations$markdown$Markdown$defaultOptions);
 var $author$project$Blog$content = A2($elm_explorations$markdown$Markdown$toHtml, _List_Nil, '\n# Akim\'s blog is under development 🚧\n');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$html$Html$p = _VirtualDom_node('p');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Blog$postPreviewCard = F2(
+	function (title, subtitle) {
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('card mb-4')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('card-content')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('title')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(title)
+								])),
+							A2(
+							$elm$html$Html$p,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('subtitle')
+								]),
+							_List_fromArray(
+								[
+									$elm$html$Html$text(subtitle)
+								]))
+						]))
+				]));
+	});
 var $author$project$Blog$postsPreview = function (model) {
 	return model.loaded ? A2(
 		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('content')
-			]),
+		_List_Nil,
 		A2(
 			$elm$core$List$map,
 			function (post) {
@@ -6372,15 +6411,12 @@ var $author$project$Blog$postsPreview = function (model) {
 					_List_Nil,
 					_List_fromArray(
 						[
-							$elm$html$Html$text(post.title)
+							A2($author$project$Blog$postPreviewCard, post.title, post.subtitle)
 						]));
 			},
 			model.posts)) : A2(
 		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('content')
-			]),
+		_List_Nil,
 		_List_fromArray(
 			[
 				$elm$html$Html$text('Loading Posts...')

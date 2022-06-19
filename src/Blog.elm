@@ -1,5 +1,5 @@
 module Blog exposing (main)
-import Html exposing (div, text)
+import Html exposing (div, p, text)
 import Markdown
 import Html.Attributes exposing (class)
 import Browser
@@ -40,13 +40,22 @@ content =
 # Akim's blog is under development 🚧
 """
 
+postPreviewCard: String -> String -> Html.Html Msg
+postPreviewCard title subtitle =
+    div [class "card mb-4"] [
+        div [class "card-content"] [
+            p [class "title"] [text title]
+            , p [class "subtitle"] [text subtitle]
+        ]
+    ]
+
 
 postsPreview: Model -> Html.Html Msg
 postsPreview model = if model.loaded == True
     then 
-        div [class "content"] (List.map (\post-> div [] [text post.title]) model.posts)
+        div [] (List.map (\post-> div [] [postPreviewCard post.title post.subtitle]) model.posts)
     else 
-        div [class "content"] [text "Loading Posts..."]
+        div [] [text "Loading Posts..."]
 
 
 view : Model -> Html.Html Msg
