@@ -6315,7 +6315,7 @@ var $author$project$Blog$initialCmd = $elm$http$Http$get(
 			$elm$http$Http$expectJson,
 			$author$project$Blog$GotPosts,
 			$elm$json$Json$Decode$list($author$project$Blog$postDecoder)),
-		url: 'https://khalitov-blog.azurewebsites.net/api/blog/posts'
+		url: 'https://khalitov-blog.herokuapp.com/api/blog/posts'
 	});
 var $author$project$Blog$initialModel = {loaded: false, posts: _List_Nil, test: '123'};
 var $elm$core$Platform$Sub$batch = _Platform_batch;
