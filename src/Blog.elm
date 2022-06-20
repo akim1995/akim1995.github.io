@@ -79,7 +79,7 @@ initialCmd: Cmd Msg
 initialCmd = 
     Http.get
     {
-        url = "https://khalitov-blog.azurewebsites.net/api/blog/posts"
+        url = "https://khalitov-blog.herokuapp.com/api/blog/posts"
         , expect = Http.expectJson GotPosts (list postDecoder)
     }
 
