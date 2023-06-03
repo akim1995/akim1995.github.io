@@ -14,7 +14,7 @@ heroSection =
 
 
 bodySection =
-    div [ class "container mt-4 px-2" ]
+    div [ class "container mt-4 px-3" ]
         [ div [ class "content" ]
             [ h1 []
                 [ text "Welcome to my personal page!" ]

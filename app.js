@@ -4444,7 +4444,7 @@ var $author$project$Main$bodySection = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('container mt-4 px-2')
+			$elm$html$Html$Attributes$class('container mt-4 px-3')
 		]),
 	_List_fromArray(
 		[
