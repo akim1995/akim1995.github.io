@@ -5256,7 +5256,6 @@ var $author$project$Main$update = F2(
 		}
 	});
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5266,21 +5265,16 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
-};
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$header = _VirtualDom_node('header');
 var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$html$Html$section = _VirtualDom_node('section');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Components$HeroSection$heroSection = A2(
-	$elm$html$Html$section,
+	$elm$html$Html$header,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('hero is-info')
+			$elm$html$Html$Attributes$class('bg-blue-400 py-10')
 		]),
 	_List_fromArray(
 		[
@@ -5288,34 +5282,25 @@ var $author$project$Components$HeroSection$heroSection = A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('hero-body')
+					$elm$html$Html$Attributes$class('xl:container mx-auto px-8')
 				]),
 			_List_fromArray(
 				[
 					A2(
-					$elm$html$Html$p,
+					$elm$html$Html$h1,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class('title')
+							$elm$html$Html$Attributes$class('text-4xl font-bold text-white')
 						]),
 					_List_fromArray(
 						[
-							A2(
-							$elm$html$Html$a,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href('/')
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text('Akim Khalitov')
-								]))
+							$elm$html$Html$text('Akim Khalitov')
 						])),
 					A2(
 					$elm$html$Html$p,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class('subtitle')
+							$elm$html$Html$Attributes$class('text-xl text-white')
 						]),
 					_List_fromArray(
 						[
@@ -5323,12 +5308,42 @@ var $author$project$Components$HeroSection$heroSection = A2(
 						]))
 				]))
 		]));
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $author$project$Main$homePageView = A2(
-	$elm$html$Html$div,
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
+var $elm$html$Html$li = _VirtualDom_node('li');
+var $author$project$Components$Navigation$listItemLink = function (_v0) {
+	var linkText = _v0.a;
+	var url = _v0.b;
+	return A2(
+		$elm$html$Html$li,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$a,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('header-link'),
+						$elm$html$Html$Attributes$href(url)
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text(linkText)
+					]))
+			]));
+};
+var $elm$html$Html$nav = _VirtualDom_node('nav');
+var $elm$html$Html$ul = _VirtualDom_node('ul');
+var $author$project$Components$Navigation$navigation = A2(
+	$elm$html$Html$nav,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('container mt-4 px-3')
+			$elm$html$Html$Attributes$class('bg-gray-500 border-y border-gray-600')
 		]),
 	_List_fromArray(
 		[
@@ -5336,7 +5351,43 @@ var $author$project$Main$homePageView = A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('content')
+					$elm$html$Html$Attributes$class('container mx-auto')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$ul,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('flex items-center gap-6 justify-center py-3')
+						]),
+					A2(
+						$elm$core$List$map,
+						$author$project$Components$Navigation$listItemLink,
+						_List_fromArray(
+							[
+								_Utils_Tuple2('About', '/'),
+								_Utils_Tuple2('Projects', '/projects'),
+								_Utils_Tuple2('Skills', '/skills'),
+								_Utils_Tuple2('Experience', '/experience'),
+								_Utils_Tuple2('Contact', '/contact')
+							])))
+				]))
+		]));
+var $elm$html$Html$section = _VirtualDom_node('section');
+var $author$project$Main$homePageView = A2(
+	$elm$html$Html$section,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('pt-6')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('container mx-auto px-4')
 				]),
 			_List_fromArray(
 				[
@@ -5345,11 +5396,14 @@ var $author$project$Main$homePageView = A2(
 					_List_Nil,
 					_List_fromArray(
 						[
-							$elm$html$Html$text('Welcome to my personal page!')
+							$elm$html$Html$text('About My Professional Journey')
 						])),
 					A2(
 					$elm$html$Html$p,
-					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('text-lg')
+						]),
 					_List_fromArray(
 						[
 							$elm$html$Html$text('I\'m currently working on developing this space to showcase my professional journey and achievements.🚀  While it\'s still a work in progress, I encourage you to connect with me on '),
@@ -5366,7 +5420,10 @@ var $author$project$Main$homePageView = A2(
 						])),
 					A2(
 					$elm$html$Html$p,
-					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('text-lg')
+						]),
 					_List_fromArray(
 						[
 							$elm$html$Html$text('There, you can learn more about my background, skills, and experiences.📚 I\'m always open to new opportunities, collaborations, and meaningful conversations, so don\'t hesitate to reach out. 🤝')
@@ -5375,28 +5432,89 @@ var $author$project$Main$homePageView = A2(
 		]));
 var $author$project$Main$showPageContent = function (url) {
 	var _v0 = url.path;
-	if (_v0 === '/about') {
-		return A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('content')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('About section placeholder')
-						]))
-				]));
-	} else {
-		return $author$project$Main$homePageView;
+	switch (_v0) {
+		case '/projects':
+			return A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('content')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Projects section placeholder')
+							]))
+					]));
+		case '/skills':
+			return A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('content')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Skills section placeholder')
+							]))
+					]));
+		case '/experience':
+			return A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('content')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Experience section placeholder')
+							]))
+					]));
+		case '/contact':
+			return A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('content')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Contact section placeholder')
+							]))
+					]));
+		default:
+			return $author$project$Main$homePageView;
 	}
 };
 var $author$project$Main$view = function (model) {
@@ -5409,6 +5527,7 @@ var $author$project$Main$view = function (model) {
 				_List_fromArray(
 					[
 						$author$project$Components$HeroSection$heroSection,
+						$author$project$Components$Navigation$navigation,
 						$author$project$Main$showPageContent(model.url)
 					]))
 			]),

@@ -1,12 +1,13 @@
-module Main exposing (main, homePageView)
+module Main exposing (homePageView, main)
 
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (a, div, h1, p, text)
-import Html.Attributes exposing (class, href)
-import Url
 import Components.HeroSection exposing (heroSection)
+import Components.Navigation exposing (navigation)
+import Html exposing (a, div, h1, p, section, text)
+import Html.Attributes exposing (class, href)
 import Types.Msg exposing (Msg(..))
+import Url
 
 
 
@@ -77,8 +78,17 @@ subscriptions _ =
 showPageContent : Url.Url -> Html.Html Msg
 showPageContent url =
     case url.path of
-        "/about" ->
-            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "About section placeholder" ] ]
+        "/projects" ->
+            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "Projects section placeholder" ] ]
+
+        "/skills" ->
+            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "Skills section placeholder" ] ]
+
+        "/experience" ->
+            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "Experience section placeholder" ] ]
+
+        "/contact" ->
+            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "Contact section placeholder" ] ]
 
         _ ->
             homePageView
@@ -87,22 +97,21 @@ showPageContent url =
 view : Model -> Browser.Document Msg
 view model =
     { title = "Akim Khalitov - Web Developer"
-    , body = [ div [] [ heroSection, showPageContent model.url ] ]
+    , body = [ div [] [ heroSection, navigation, showPageContent model.url ] ]
     }
 
 
 homePageView : Html.Html Msg
 homePageView =
-    div [ class "container mt-4 px-3" ]
-        [ div [ class "content" ]
+    section [ class "pt-6" ]
+        [ div [ class "container mx-auto px-4" ]
             [ h1 []
-                [ text "Welcome to my personal page!" ]
-            , p []
+                [ text "About My Professional Journey" ]
+            , p [ class "text-lg" ]
                 [ text "I'm currently working on developing this space to showcase my professional journey and achievements.🚀  While it's still a work in progress, I encourage you to connect with me on "
                 , a [ href "https://www.linkedin.com/in/akim-khalitov " ] [ text "LinkedIn" ]
                 ]
-            , p []
+            , p [ class "text-lg" ]
                 [ text "There, you can learn more about my background, skills, and experiences.📚 I'm always open to new opportunities, collaborations, and meaningful conversations, so don't hesitate to reach out. 🤝" ]
-                -- [ text "There, you can learn more about my background, skills, and experiences.📚 I'm always open to new opportunities, collaborations, and meaningful conversations, so don't hesitate to reach out. 🤝", a [ href "/about" ] [text "about"] ]
             ]
         ]

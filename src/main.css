@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&display=swap');
+@config "../tailwind.config.js";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Rest of your CSS code */
+
+
+@layer base {
+  a {
+    @apply text-blue-900;
+  }
+  h1 {
+    @apply text-4xl;
+    @apply font-medium;
+    @apply mb-3
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  p {
+    @apply mb-3;
+    @apply text-gray-700
+  }
+}
+
+@layer components {
+  .header-link {
+    @apply text-gray-300 hover:text-white hover:underline;
+  }
+}
