@@ -5265,9 +5265,7 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$header = _VirtualDom_node('header');
-var $elm$html$Html$p = _VirtualDom_node('p');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Components$HeroSection$heroSection = A2(
@@ -5287,7 +5285,7 @@ var $author$project$Components$HeroSection$heroSection = A2(
 			_List_fromArray(
 				[
 					A2(
-					$elm$html$Html$h1,
+					$elm$html$Html$div,
 					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$class('text-4xl font-bold text-white')
@@ -5297,7 +5295,7 @@ var $author$project$Components$HeroSection$heroSection = A2(
 							$elm$html$Html$text('Akim Khalitov')
 						])),
 					A2(
-					$elm$html$Html$p,
+					$elm$html$Html$div,
 					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$class('text-xl text-white')
@@ -5359,7 +5357,7 @@ var $author$project$Components$Navigation$navigation = A2(
 					$elm$html$Html$ul,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class('flex items-center gap-6 justify-center py-3')
+							$elm$html$Html$Attributes$class('flex items-center gap-2 sm:gap-6 justify-center py-3')
 						]),
 					A2(
 						$elm$core$List$map,
@@ -5374,143 +5372,208 @@ var $author$project$Components$Navigation$navigation = A2(
 							])))
 				]))
 		]));
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$section = _VirtualDom_node('section');
-var $author$project$Main$homePageView = A2(
-	$elm$html$Html$section,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('pt-6')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$div,
+var $author$project$Components$Layout$PageContent$pageContent = F2(
+	function (pageTitle, pageBody) {
+		return A2(
+			$elm$html$Html$section,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('container mx-auto px-4')
+					$elm$html$Html$Attributes$class('pt-6')
 				]),
 			_List_fromArray(
 				[
 					A2(
-					$elm$html$Html$h1,
-					_List_Nil,
+					$elm$html$Html$div,
 					_List_fromArray(
 						[
-							$elm$html$Html$text('About My Professional Journey')
-						])),
+							$elm$html$Html$Attributes$class('container mx-auto px-4')
+						]),
 					A2(
-					$elm$html$Html$p,
+						$elm$core$List$cons,
+						A2(
+							$elm$html$Html$h1,
+							_List_Nil,
+							_List_fromArray(
+								[
+									$elm$html$Html$text(pageTitle)
+								])),
+						pageBody))
+				]));
+	});
+var $author$project$Main$homePageView = A2(
+	$author$project$Components$Layout$PageContent$pageContent,
+	'About My Professional Journey',
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('text-lg')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('I\'m currently working on developing this space to showcase my professional journey and achievements.🚀  While it\'s still a work in progress, I encourage you to connect with me on '),
+					A2(
+					$elm$html$Html$a,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class('text-lg')
+							$elm$html$Html$Attributes$href('https://www.linkedin.com/in/akim-khalitov ')
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text('I\'m currently working on developing this space to showcase my professional journey and achievements.🚀  While it\'s still a work in progress, I encourage you to connect with me on '),
-							A2(
-							$elm$html$Html$a,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href('https://www.linkedin.com/in/akim-khalitov ')
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text('LinkedIn')
-								]))
-						])),
-					A2(
-					$elm$html$Html$p,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('text-lg')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('There, you can learn more about my background, skills, and experiences.📚 I\'m always open to new opportunities, collaborations, and meaningful conversations, so don\'t hesitate to reach out. 🤝')
+							$elm$html$Html$text('LinkedIn')
 						]))
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('text-lg')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('There, you can learn more about my background, skills, and experiences.📚 I\'m always open to new opportunities, collaborations, and meaningful conversations, so don\'t hesitate to reach out. 🤝')
 				]))
 		]));
+var $elm$html$Html$i = _VirtualDom_node('i');
+var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
 var $author$project$Main$showPageContent = function (url) {
 	var _v0 = url.path;
 	switch (_v0) {
 		case '/projects':
 			return A2(
-				$elm$html$Html$div,
+				$author$project$Components$Layout$PageContent$pageContent,
+				'Projects',
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('content')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Projects section placeholder')
-							]))
+						$elm$html$Html$text('Projects section is under development 🚧')
 					]));
 		case '/skills':
 			return A2(
-				$elm$html$Html$div,
+				$author$project$Components$Layout$PageContent$pageContent,
+				'Skills',
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('content')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Skills section placeholder')
-							]))
+						$elm$html$Html$text('Skills section is under development 🚧')
 					]));
 		case '/experience':
 			return A2(
-				$elm$html$Html$div,
+				$author$project$Components$Layout$PageContent$pageContent,
+				'Experience',
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('content')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Experience section placeholder')
-							]))
+						$elm$html$Html$text('Experience section is under development 🚧')
 					]));
 		case '/contact':
 			return A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('contaienr mt-4 px-3')
-					]),
+				$author$project$Components$Layout$PageContent$pageContent,
+				'Contact info',
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$div,
+						$elm$html$Html$ul,
+						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('content')
-							]),
-						_List_fromArray(
-							[
-								$elm$html$Html$text('Contact section placeholder')
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$i,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('fa fa-fw fa-linkedin text-[#0a66c2]')
+											]),
+										_List_Nil),
+										A2(
+										$elm$html$Html$a,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$href('https://www.linkedin.com/in/akim-khalitov'),
+												$elm$html$Html$Attributes$target('_blank')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text(' akim-khalitov')
+											]))
+									])),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$i,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('fa fa-fw fa-telegram text-[#27A7E7]')
+											]),
+										_List_Nil),
+										A2(
+										$elm$html$Html$a,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$href('https://t.me/akim1995'),
+												$elm$html$Html$Attributes$target('_blank')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text(' @akim1995')
+											]))
+									])),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$i,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('fa fa-fw fa-skype text-[#009EDC]')
+											]),
+										_List_Nil),
+										A2(
+										$elm$html$Html$a,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$href('skype:live:akim.khalitov'),
+												$elm$html$Html$Attributes$target('_blank')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text(' live:akim.khalitov')
+											]))
+									])),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$i,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('fa fa-fw fa-envelope-o')
+											]),
+										_List_Nil),
+										A2(
+										$elm$html$Html$a,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$href('mailto:akim.khalitov.ya@gmail.com')
+											]),
+										_List_fromArray(
+											[
+												$elm$html$Html$text(' akim.khalitov.ya@gmail.com')
+											]))
+									]))
 							]))
 					]));
 		default:

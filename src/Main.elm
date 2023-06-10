@@ -3,9 +3,10 @@ module Main exposing (homePageView, main)
 import Browser
 import Browser.Navigation as Nav
 import Components.HeroSection exposing (heroSection)
+import Components.Layout.PageContent exposing (pageContent)
 import Components.Navigation exposing (navigation)
-import Html exposing (a, div, h1, p, section, text)
-import Html.Attributes exposing (class, href)
+import Html exposing (a, div, h1, i, li, p, section, text, ul)
+import Html.Attributes exposing (class, href, target)
 import Types.Msg exposing (Msg(..))
 import Url
 
@@ -79,16 +80,29 @@ showPageContent : Url.Url -> Html.Html Msg
 showPageContent url =
     case url.path of
         "/projects" ->
-            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "Projects section placeholder" ] ]
+            pageContent "Projects"
+                [ text "Projects section is under development 🚧"
+                ]
 
         "/skills" ->
-            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "Skills section placeholder" ] ]
+            pageContent "Skills"
+                [ text "Skills section is under development 🚧"
+                ]
 
         "/experience" ->
-            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "Experience section placeholder" ] ]
+            pageContent "Experience"
+                [ text "Experience section is under development 🚧"
+                ]
 
         "/contact" ->
-            div [ class "contaienr mt-4 px-3" ] [ div [ class "content" ] [ text "Contact section placeholder" ] ]
+            pageContent "Contact info"
+                [ ul []
+                    [ li [] [ i [ class "fa fa-fw fa-linkedin text-[#0a66c2]" ] [], a [ href "https://www.linkedin.com/in/akim-khalitov", target "_blank" ] [ text " akim-khalitov" ] ]
+                    , li [] [ i [ class "fa fa-fw fa-telegram text-[#27A7E7]" ] [], a [ href "https://t.me/akim1995", target "_blank" ] [ text " @akim1995" ] ]
+                    , li [] [ i [ class "fa fa-fw fa-skype text-[#009EDC]" ] [], a [ href "skype:live:akim.khalitov", target "_blank" ] [ text " live:akim.khalitov" ] ]
+                    , li [] [ i [ class "fa fa-fw fa-envelope-o" ] [], a [ href "mailto:akim.khalitov.ya@gmail.com" ] [ text " akim.khalitov.ya@gmail.com" ] ]
+                    ]
+                ]
 
         _ ->
             homePageView
@@ -103,15 +117,11 @@ view model =
 
 homePageView : Html.Html Msg
 homePageView =
-    section [ class "pt-6" ]
-        [ div [ class "container mx-auto px-4" ]
-            [ h1 []
-                [ text "About My Professional Journey" ]
-            , p [ class "text-lg" ]
-                [ text "I'm currently working on developing this space to showcase my professional journey and achievements.🚀  While it's still a work in progress, I encourage you to connect with me on "
-                , a [ href "https://www.linkedin.com/in/akim-khalitov " ] [ text "LinkedIn" ]
-                ]
-            , p [ class "text-lg" ]
-                [ text "There, you can learn more about my background, skills, and experiences.📚 I'm always open to new opportunities, collaborations, and meaningful conversations, so don't hesitate to reach out. 🤝" ]
+    pageContent "About My Professional Journey"
+        [ p [ class "text-lg" ]
+            [ text "I'm currently working on developing this space to showcase my professional journey and achievements.🚀  While it's still a work in progress, I encourage you to connect with me on "
+            , a [ href "https://www.linkedin.com/in/akim-khalitov " ] [ text "LinkedIn" ]
             ]
+        , p [ class "text-lg" ]
+            [ text "There, you can learn more about my background, skills, and experiences.📚 I'm always open to new opportunities, collaborations, and meaningful conversations, so don't hesitate to reach out. 🤝" ]
         ]
