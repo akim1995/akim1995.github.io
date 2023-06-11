@@ -5357,7 +5357,7 @@ var $author$project$Components$Navigation$navigation = A2(
 					$elm$html$Html$ul,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class('flex items-center gap-2 sm:gap-6 justify-center py-3')
+							$elm$html$Html$Attributes$class('flex items-center gap-3 sm:gap-6 justify-center py-3')
 						]),
 					A2(
 						$elm$core$List$map,
@@ -5405,7 +5405,7 @@ var $author$project$Components$Layout$PageContent$pageContent = F2(
 	});
 var $author$project$Main$homePageView = A2(
 	$author$project$Components$Layout$PageContent$pageContent,
-	'About My Professional Journey',
+	'About',
 	_List_fromArray(
 		[
 			A2(
@@ -5416,17 +5416,7 @@ var $author$project$Main$homePageView = A2(
 				]),
 			_List_fromArray(
 				[
-					$elm$html$Html$text('I\'m currently working on developing this space to showcase my professional journey and achievements.🚀  While it\'s still a work in progress, I encourage you to connect with me on '),
-					A2(
-					$elm$html$Html$a,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$href('https://www.linkedin.com/in/akim-khalitov ')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text('LinkedIn')
-						]))
+					$elm$html$Html$text('🚀 Full Stack Developer with a frontend focus and over 5 years of experience in web development. I bring extensive expertise in software development and a strong dedication to delivering high-quality solutions. Proficient in JavaScript, Node.js, Nest.js, PostgreSQL, CI/CD, and adept at leveraging cloud services like Azure and Amazon.  ')
 				])),
 			A2(
 			$elm$html$Html$p,
@@ -5436,7 +5426,38 @@ var $author$project$Main$homePageView = A2(
 				]),
 			_List_fromArray(
 				[
-					$elm$html$Html$text('There, you can learn more about my background, skills, and experiences.📚 I\'m always open to new opportunities, collaborations, and meaningful conversations, so don\'t hesitate to reach out. 🤝')
+					$elm$html$Html$text('🧪 Recognizing the importance of software reliability, I introduced and implemented end-to-end (e2e) testing methodologies to improve the overall quality of projects. Working closely with the QA department, I facilitated the adoption of best practices and techniques for conducting e2e tests. This proactive approach resulted in enhanced testing processes, leading to more robust and reliable software releases.')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('text-lg')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('🔧 Furthermore, I have embraced functional programming concepts, particularly through Elm and Haskell. By leveraging composition techniques, utilizing pure functions, and employing monads and Algebraic data structures, I have effectively introduced functional programming principles into JavaScript codebases. This has significantly enhanced the robustness and maintainability of the solutions I develop.')
+				])),
+			A2(
+			$elm$html$Html$p,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('text-lg mb-2')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('I\'m always open to new opportunities, collaborations, and meaningful conversations, so don\'t hesitate to check out my contact info'),
+					A2(
+					$elm$html$Html$a,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$href('/contact')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text(' here')
+						])),
+					$elm$html$Html$text('.')
 				]))
 		]));
 var $elm$html$Html$i = _VirtualDom_node('i');

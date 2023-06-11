@@ -117,11 +117,16 @@ view model =
 
 homePageView : Html.Html Msg
 homePageView =
-    pageContent "About My Professional Journey"
+    pageContent "About"
         [ p [ class "text-lg" ]
-            [ text "I'm currently working on developing this space to showcase my professional journey and achievements.🚀  While it's still a work in progress, I encourage you to connect with me on "
-            , a [ href "https://www.linkedin.com/in/akim-khalitov " ] [ text "LinkedIn" ]
-            ]
+            [ text "🚀 Full Stack Developer with a frontend focus and over 5 years of experience in web development. I bring extensive expertise in software development and a strong dedication to delivering high-quality solutions. Proficient in JavaScript, Node.js, Nest.js, PostgreSQL, CI/CD, and adept at leveraging cloud services like Azure and Amazon.  " ]
         , p [ class "text-lg" ]
-            [ text "There, you can learn more about my background, skills, and experiences.📚 I'm always open to new opportunities, collaborations, and meaningful conversations, so don't hesitate to reach out. 🤝" ]
+            [ text "🧪 Recognizing the importance of software reliability, I introduced and implemented end-to-end (e2e) testing methodologies to improve the overall quality of projects. Working closely with the QA department, I facilitated the adoption of best practices and techniques for conducting e2e tests. This proactive approach resulted in enhanced testing processes, leading to more robust and reliable software releases." ]
+        , p [ class "text-lg" ]
+            [ text "🔧 Furthermore, I have embraced functional programming concepts, particularly through Elm and Haskell. By leveraging composition techniques, utilizing pure functions, and employing monads and Algebraic data structures, I have effectively introduced functional programming principles into JavaScript codebases. This has significantly enhanced the robustness and maintainability of the solutions I develop." ]
+        , p [ class "text-lg mb-2" ]
+            [ text "I'm always open to new opportunities, collaborations, and meaningful conversations, so don't hesitate to check out my contact info"
+            , a [ href "/contact" ] [ text " here" ]
+            , text "."
+            ]
         ]
