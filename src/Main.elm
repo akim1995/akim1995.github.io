@@ -97,9 +97,11 @@ showPageContent url =
         "/contact" ->
             pageContent "Contact info"
                 [ ul []
-                    [ li [] [ i [ class "fa fa-fw fa-linkedin text-[#0a66c2]" ] [], a [ href "https://www.linkedin.com/in/akim-khalitov", target "_blank" ] [ text " akim-khalitov" ] ]
+                    [
+                      li [] [ i [ class "fa fa-fw fa-map-marker text-red-500" ] [], text " Armenia, Yerevan" ]
                     , li [] [ i [ class "fa fa-fw fa-telegram text-[#27A7E7]" ] [], a [ href "https://t.me/akim1995", target "_blank" ] [ text " @akim1995" ] ]
                     , li [] [ i [ class "fa fa-fw fa-skype text-[#009EDC]" ] [], a [ href "skype:live:akim.khalitov", target "_blank" ] [ text " live:akim.khalitov" ] ]
+                    , li [] [ i [ class "fa fa-fw fa-linkedin text-[#0a66c2]" ] [], a [ href "https://www.linkedin.com/in/akim-khalitov", target "_blank" ] [ text " akim-khalitov" ] ]
                     , li [] [ i [ class "fa fa-fw fa-envelope-o" ] [], a [ href "mailto:akim.khalitov.ya@gmail.com" ] [ text " akim.khalitov.ya@gmail.com" ] ]
                     ]
                 ]
@@ -119,13 +121,23 @@ homePageView : Html.Html Msg
 homePageView =
     pageContent "About"
         [ p [ class "text-lg" ]
-            [ text "🚀 Full Stack Developer with a frontend focus and over 5 years of experience in web development. I bring extensive expertise in software development and a strong dedication to delivering high-quality solutions. Proficient in JavaScript, Node.js, Nest.js, PostgreSQL, CI/CD, and adept at leveraging cloud services like Azure and Amazon.  " ]
+            [ text "Hi I'm a Full Stack Developer with a frontend focus and over 5 years of experience in web development. I bring extensive expertise in software development and a strong dedication to delivering high-quality solutions. Proficient in JavaScript, Node.js, Nest.js, PostgreSQL, CI/CD, and adept at leveraging cloud services like Azure and Amazon.  " ]
         , p [ class "text-lg" ]
-            [ text "🧪 Recognizing the importance of software reliability, I introduced and implemented end-to-end (e2e) testing methodologies to improve the overall quality of projects. Working closely with the QA department, I facilitated the adoption of best practices and techniques for conducting e2e tests. This proactive approach resulted in enhanced testing processes, leading to more robust and reliable software releases." ]
+            [ text <|
+                "Over the years I gained experience in multiple frontend frameworks such as Vue.js, Angular, React, and Elm. "
+                    ++ "I have also embraced functional programming concepts, particularly through Elm and Haskell."
+                    ++ "By leveraging composition techniques, utilizing pure functions, and employing monads and Algebraic data structures, "
+                    ++ "I have effectively introduced functional programming principles into JavaScript codebases. "
+                    ++ "This gradual adoption of functional programming concepts was done with caution, considering "
+                    ++ "the experience with functional programming concepts by other team members. It was introduced little by little, "
+                    ++ "ensuring smooth integration and allowing the team to learn and adapt at their own pace. This approach has significantly enhanced the robustness and maintainability of the solutions I develop."
+            ]
         , p [ class "text-lg" ]
-            [ text "🔧 Furthermore, I have embraced functional programming concepts, particularly through Elm and Haskell. By leveraging composition techniques, utilizing pure functions, and employing monads and Algebraic data structures, I have effectively introduced functional programming principles into JavaScript codebases. This has significantly enhanced the robustness and maintainability of the solutions I develop." ]
+            [ text "Recognizing the importance of software reliability, I have introduced and implemented end-to-end (e2e) and unit testing methodologies in various projects to improve the overall quality. Working closely with the QA department, I facilitated the adoption of best practices and techniques for conducting e2e tests. This proactive approach resulted in enhanced testing processes, leading to more robust and reliable software releases." ]
         , p [ class "text-lg mb-2" ]
-            [ text "I'm always open to new opportunities, collaborations, and meaningful conversations, so don't hesitate to check out my contact info"
+            [ text <|
+                "Originally from Russia, I have since moved to Armenia following the events of February 2022. "
+                    ++ "I am always open to new opportunities, collaborations, and meaningful conversations. If you would like to get in touch, please check out my contact info"
             , a [ href "/contact" ] [ text " here" ]
             , text "."
             ]
