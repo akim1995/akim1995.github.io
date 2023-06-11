@@ -5357,7 +5357,7 @@ var $author$project$Components$Navigation$navigation = A2(
 					$elm$html$Html$ul,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$class('flex items-center gap-3 sm:gap-6 justify-center py-3')
+							$elm$html$Html$Attributes$class('flex items-center gap-4 sm:gap-6 justify-center py-3')
 						]),
 					A2(
 						$elm$core$List$map,

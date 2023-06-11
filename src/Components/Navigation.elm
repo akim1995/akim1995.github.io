@@ -8,7 +8,7 @@ navigation : Html.Html msg
 navigation =
     nav [ class "bg-gray-500 border-y border-gray-600" ]
         [ div [ class "container mx-auto" ]
-            [ ul [ class "flex items-center gap-3 sm:gap-6 justify-center py-3" ]
+            [ ul [ class "flex items-center gap-4 sm:gap-6 justify-center py-3" ]
                 (List.map listItemLink
                     [ ( "About", "/" )
                     , ( "Projects", "/projects" )
