@@ -121,7 +121,7 @@ homePageView : Html.Html Msg
 homePageView =
     pageContent "About"
         [ p [ class "text-lg" ]
-            [ text "Hi I'm a Full Stack Developer with a frontend focus and over 5 years of experience in web development. I bring extensive expertise in software development and a strong dedication to delivering high-quality solutions. Proficient in JavaScript, Node.js, Nest.js, PostgreSQL, CI/CD, and adept at leveraging cloud services like Azure and Amazon.  " ]
+            [ text "Hi I'm a Full Stack Developer with a frontend focus and over 5 years of experience in web development. I bring extensive expertise in software development and a strong dedication to delivering high-quality solutions. Proficient in JavaScript, Node.js, Nest.js, PostgreSQL, CI/CD, also have experiense leveraging cloud services like Azure and Amazon.  " ]
         , p [ class "text-lg" ]
             [ text <|
                 "Over the years I gained experience in multiple frontend frameworks such as Vue.js, Angular, React, and Elm. "
