@@ -1,3 +1,3 @@
-## To start hot reload during development start a server like this
-* for Elm compiling `elm-live src/Main.elm --open  --pushstate -- --output=app.js`
-* for CSS compiling `npx tailwindcss -i ./src/main.css -o styles.css --watch`
+# How to run
+## Dev mode with hot reloading
+To start in dev mode run `npm run serve`, `npm run tailwind:watch`, and `npm run elm:watch` in separate terminals.

@@ -1,7 +1,7 @@
 {
   "name": "akim1995.github.io",
   "version": "1.0.0",
-  "description": "To start in dev mode run `npm run serve`, `npm run tailwind:watch`, and `npm run elm:watch` in separate terminals.",
+  "description": "Personal portfolio website",
   "main": "app.js",
   "scripts": {
     "serve": "servor",
