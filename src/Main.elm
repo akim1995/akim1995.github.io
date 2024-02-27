@@ -9,6 +9,7 @@ import Html exposing (a, div, h1, i, li, p, section, text, ul)
 import Html.Attributes exposing (class, href, target)
 import Types.Msg exposing (Msg(..))
 import Url
+import Components.TagList exposing (tagList)
 
 
 
@@ -86,7 +87,9 @@ showPageContent url =
 
         "/skills" ->
             pageContent "Skills"
-                [ text "Skills section is under development 🚧"
+                [ text "Short overview of my skills and technologies I employ in my daily work:"
+                , tagList
+                    [ "JavaScript", "TypeScript", "Node.js", "Nest.js", "PostgreSQL", "Vue.js", "React", "Linux", "Docker" ]
                 ]
 
         "/experience" ->

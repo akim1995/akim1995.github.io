@@ -5455,6 +5455,27 @@ var $author$project$Main$homePageView = A2(
 				]))
 		]));
 var $elm$html$Html$i = _VirtualDom_node('i');
+var $author$project$Components$TagList$tagItem = function (value) {
+	return A2(
+		$elm$html$Html$li,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1')
+			]),
+		_List_fromArray(
+			[
+				$elm$html$Html$text(value)
+			]));
+};
+var $author$project$Components$TagList$tagList = function (tags) {
+	return A2(
+		$elm$html$Html$ul,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('flex flex-wrap list-none')
+			]),
+		A2($elm$core$List$map, $author$project$Components$TagList$tagItem, tags));
+};
 var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
 var $author$project$Main$showPageContent = function (url) {
 	var _v0 = url.aJ;
@@ -5473,7 +5494,10 @@ var $author$project$Main$showPageContent = function (url) {
 				'Skills',
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Skills section is under development 🚧')
+						$elm$html$Html$text('Short overview of my skills and technologies I employ in my daily work:'),
+						$author$project$Components$TagList$tagList(
+						_List_fromArray(
+							['JavaScript', 'TypeScript', 'Node.js', 'Nest.js', 'PostgreSQL', 'Vue.js', 'React', 'Linux', 'Docker']))
 					]));
 		case '/experience':
 			return A2(
