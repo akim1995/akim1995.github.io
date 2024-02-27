@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.J.z === region.Q.z)
+	if (region.J.z === region.R.z)
 	{
 		return 'on line ' + region.J.z;
 	}
-	return 'on lines ' + region.J.z + ' through ' + region.Q.z;
+	return 'on lines ' + region.J.z + ' through ' + region.R.z;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aD,
-		impl.aV,
-		impl.aR,
+		impl.aH,
+		impl.aY,
+		impl.aU,
 		function() { return function() {} }
 	);
 });
@@ -3943,11 +3943,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aD,
-		impl.aV,
-		impl.aR,
+		impl.aH,
+		impl.aY,
+		impl.aU,
 		function(sendToApp, initialModel) {
-			var view = impl.aW;
+			var view = impl.aZ;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3979,12 +3979,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aD,
-		impl.aV,
-		impl.aR,
+		impl.aH,
+		impl.aY,
+		impl.aU,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.I && impl.I(sendToApp)
-			var view = impl.aW;
+			var view = impl.aZ;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3992,12 +3992,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.au);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.ay);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aU) && (_VirtualDom_doc.title = title = doc.aU);
+				(title !== doc.aX) && (_VirtualDom_doc.title = title = doc.aX);
 			});
 		}
 	);
@@ -4053,8 +4053,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aG;
-	var onUrlRequest = impl.aH;
+	var onUrlChange = impl.aJ;
+	var onUrlRequest = impl.aK;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ac === next.ac
-							&& curr.V === next.V
-							&& curr._.a === next._.a
+							&& curr.ae === next.ae
+							&& curr.W === next.W
+							&& curr.ab.a === next.ab.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aD: function(flags)
+		aH: function(flags)
 		{
-			return A3(impl.aD, flags, _Browser_getUrl(), key);
+			return A3(impl.aH, flags, _Browser_getUrl(), key);
 		},
-		aW: impl.aW,
-		aV: impl.aV,
-		aR: impl.aR
+		aZ: impl.aZ,
+		aY: impl.aY,
+		aU: impl.aU
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { aB: 'hidden', aw: 'visibilitychange' }
+		? { aF: 'hidden', aA: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { aB: 'mozHidden', aw: 'mozvisibilitychange' }
+		? { aF: 'mozHidden', aA: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { aB: 'msHidden', aw: 'msvisibilitychange' }
+		? { aF: 'msHidden', aA: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { aB: 'webkitHidden', aw: 'webkitvisibilitychange' }
-		: { aB: 'hidden', aw: 'visibilitychange' };
+		? { aF: 'webkitHidden', aA: 'webkitvisibilitychange' }
+		: { aF: 'hidden', aA: 'visibilitychange' };
 }
 
 
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		ai: _Browser_getScene(),
-		an: {
-			ap: _Browser_window.pageXOffset,
-			aq: _Browser_window.pageYOffset,
-			ao: _Browser_doc.documentElement.clientWidth,
-			U: _Browser_doc.documentElement.clientHeight
+		al: _Browser_getScene(),
+		ar: {
+			at: _Browser_window.pageXOffset,
+			au: _Browser_window.pageYOffset,
+			as: _Browser_doc.documentElement.clientWidth,
+			V: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4262,8 +4262,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		ao: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		U: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		as: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		V: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			ai: {
-				ao: node.scrollWidth,
-				U: node.scrollHeight
+			al: {
+				as: node.scrollWidth,
+				V: node.scrollHeight
 			},
-			an: {
-				ap: node.scrollLeft,
-				aq: node.scrollTop,
-				ao: node.clientWidth,
-				U: node.clientHeight
+			ar: {
+				at: node.scrollLeft,
+				au: node.scrollTop,
+				as: node.clientWidth,
+				V: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			ai: _Browser_getScene(),
-			an: {
-				ap: x,
-				aq: y,
-				ao: _Browser_doc.documentElement.clientWidth,
-				U: _Browser_doc.documentElement.clientHeight
+			al: _Browser_getScene(),
+			ar: {
+				at: x,
+				au: y,
+				as: _Browser_doc.documentElement.clientWidth,
+				V: _Browser_doc.documentElement.clientHeight
 			},
-			ay: {
-				ap: x + rect.left,
-				aq: y + rect.top,
-				ao: rect.width,
-				U: rect.height
+			aC: {
+				at: x + rect.left,
+				au: y + rect.top,
+				as: rect.width,
+				V: rect.height
 			}
 		};
 	});
@@ -4880,7 +4880,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {S: fragment, V: host, aJ: path, _: port_, ac: protocol, ad: query};
+		return {T: fragment, W: host, aM: path, ab: port_, ae: protocol, af: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5161,7 +5161,7 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$application = _Browser_application;
 var $author$project$Main$Model = F2(
 	function (key, url) {
-		return {W: key, L: url};
+		return {X: key, L: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
@@ -5200,7 +5200,7 @@ var $elm$url$Url$addPrefixed = F3(
 	});
 var $elm$url$Url$toString = function (url) {
 	var http = function () {
-		var _v0 = url.ac;
+		var _v0 = url.ae;
 		if (!_v0) {
 			return 'http://';
 		} else {
@@ -5210,17 +5210,17 @@ var $elm$url$Url$toString = function (url) {
 	return A3(
 		$elm$url$Url$addPrefixed,
 		'#',
-		url.S,
+		url.T,
 		A3(
 			$elm$url$Url$addPrefixed,
 			'?',
-			url.ad,
+			url.af,
 			_Utils_ap(
 				A2(
 					$elm$url$Url$addPort,
-					url._,
-					_Utils_ap(http, url.V)),
-				url.aJ)));
+					url.ab,
+					_Utils_ap(http, url.W)),
+				url.aM)));
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
@@ -5232,7 +5232,7 @@ var $author$project$Main$update = F2(
 					model,
 					A2(
 						$elm$browser$Browser$Navigation$pushUrl,
-						model.W,
+						model.X,
 						$elm$url$Url$toString(url)));
 			} else {
 				var href = urlRequest.a;
@@ -5455,6 +5455,8 @@ var $author$project$Main$homePageView = A2(
 				]))
 		]));
 var $elm$html$Html$i = _VirtualDom_node('i');
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $author$project$Components$TagList$tagItem = function (value) {
 	return A2(
 		$elm$html$Html$li,
@@ -5472,13 +5474,71 @@ var $author$project$Components$TagList$tagList = function (tags) {
 		$elm$html$Html$ul,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('flex flex-wrap list-none')
+				$elm$html$Html$Attributes$class('inline-flex flex-wrap list-none')
 			]),
 		A2($elm$core$List$map, $author$project$Components$TagList$tagItem, tags));
 };
+var $author$project$Components$ProjectExplanationList$projectExplanation = function (project) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('project-explanation')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h2,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('text-blue-500')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text(project.Z)
+					])),
+				A2(
+				$elm$html$Html$h3,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('text-sm mb-1')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text(project.ak)
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('mb-2')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Description: ' + project.Q)
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Technologies used: '),
+						$author$project$Components$TagList$tagList(project.ap)
+					]))
+			]));
+};
+var $author$project$Components$ProjectExplanationList$projectExplanationList = function (projects) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('space-y-4')
+			]),
+		A2($elm$core$List$map, $author$project$Components$ProjectExplanationList$projectExplanation, projects));
+};
 var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
 var $author$project$Main$showPageContent = function (url) {
-	var _v0 = url.aJ;
+	var _v0 = url.aM;
 	switch (_v0) {
 		case '/projects':
 			return A2(
@@ -5486,7 +5546,31 @@ var $author$project$Main$showPageContent = function (url) {
 				'Projects',
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Projects section is under development 🚧')
+						$author$project$Components$ProjectExplanationList$projectExplanationList(
+						_List_fromArray(
+							[
+								{
+								Q: 'The project involved the development of a suite of applications and Azure DevOps extensions aimed at consolidating disparate data from Volkswagen A.G branches and sub-contractors into a unified system within the Microsoft Azure infrastructure.' + ('It encompassed modules for data collection, transformation, and bidirectional synchronization from sources such as Jira, Azure DevOps cloud instances, Azure DevOps Repos, Azure DevOps Boards, and custom systems integrated with Azure DevOps.' + 'Additionally, the project involved coordinating and providing technical assistance to the data engineering team for efficient management and integration of data across systems.'),
+								Z: 'ADOAgregation',
+								ak: 'Full Stack Developer',
+								ap: _List_fromArray(
+									['Azure', 'Node.js', 'Nest.js', 'React'])
+							},
+								{
+								Q: 'Service for the selection of exercises for the physical diagnosis and treatment of musculoskeletal system diseases.' + ('Admin panel implementation, RestAPI implementation for mobile applications, and Web interface. Role models, algorithms for selecting' + 'exercise programs for patients, user profiles, authorization, registration, and the entire backend were implemented.'),
+								Z: 'GesundenPlaner',
+								ak: 'Full Stack Developer (Backend + Admin Panel)',
+								ap: _List_fromArray(
+									['Node.js', 'Nest.js', 'TypeScript', 'PostgreSQL', 'Cloudinary', 'Sendgrid', 'Azure Devops', 'Angular11'])
+							},
+								{
+								Q: 'The one-of-the-largest-university-in-the-country platform for the digitalization of work processes with students. Within the platform framework, the tasks of students signing in, planning, booking and paying for accommodation were solved.',
+								Z: 'Students',
+								ak: 'Lead Frontend Developer',
+								ap: _List_fromArray(
+									['Angular 11', 'ngx-zorro', 'openapi-generator', 'TypeScript', 'GitLab CI/CD'])
+							}
+							]))
 					]));
 		case '/skills':
 			return A2(
@@ -5635,7 +5719,7 @@ var $author$project$Main$showPageContent = function (url) {
 };
 var $author$project$Main$view = function (model) {
 	return {
-		au: _List_fromArray(
+		ay: _List_fromArray(
 			[
 				A2(
 				$elm$html$Html$div,
@@ -5647,10 +5731,10 @@ var $author$project$Main$view = function (model) {
 						$author$project$Main$showPageContent(model.L)
 					]))
 			]),
-		aU: 'Akim Khalitov - Web Developer'
+		aX: 'Akim Khalitov - Web Developer'
 	};
 };
 var $author$project$Main$main = $elm$browser$Browser$application(
-	{aD: $author$project$Main$init, aG: $author$project$Types$Msg$UrlChanged, aH: $author$project$Types$Msg$LinkClicked, aR: $author$project$Main$subscriptions, aV: $author$project$Main$update, aW: $author$project$Main$view});
+	{aH: $author$project$Main$init, aJ: $author$project$Types$Msg$UrlChanged, aK: $author$project$Types$Msg$LinkClicked, aU: $author$project$Main$subscriptions, aY: $author$project$Main$update, aZ: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

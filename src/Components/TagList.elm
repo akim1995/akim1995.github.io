@@ -9,4 +9,4 @@ tagItem value =
 
 tagList : List String -> Html.Html msg
 tagList tags =
-    ul [ class "flex flex-wrap list-none"] (List.map tagItem tags)
+    ul [ class "inline-flex flex-wrap list-none"] (List.map tagItem tags)

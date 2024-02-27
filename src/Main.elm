@@ -5,11 +5,12 @@ import Browser.Navigation as Nav
 import Components.HeroSection exposing (heroSection)
 import Components.Layout.PageContent exposing (pageContent)
 import Components.Navigation exposing (navigation)
+import Components.ProjectExplanationList exposing (projectExplanationList)
+import Components.TagList exposing (tagList)
 import Html exposing (a, div, h1, i, li, p, section, text, ul)
 import Html.Attributes exposing (class, href, target)
 import Types.Msg exposing (Msg(..))
 import Url
-import Components.TagList exposing (tagList)
 
 
 
@@ -82,9 +83,34 @@ showPageContent url =
     case url.path of
         "/projects" ->
             pageContent "Projects"
-                [ text "Projects section is under development 🚧"
+                [ projectExplanationList
+                    [ { name = "ADOAgregation"
+                      , role = "Full Stack Developer"
+                      , technologies = [ "Azure", "Node.js", "Nest.js", "React" ]
+                      , description =
+                            "The project involved the development of a suite of applications and Azure DevOps extensions aimed at consolidating disparate data from Volkswagen A.G branches and sub-contractors into a unified system within the Microsoft Azure infrastructure."
+                                ++ "It encompassed modules for data collection, transformation, and bidirectional synchronization from sources such as Jira, Azure DevOps cloud instances, Azure DevOps Repos, Azure DevOps Boards, and custom systems integrated with Azure DevOps."
+                                ++ "Additionally, the project involved coordinating and providing technical assistance to the data engineering team for efficient management and integration of data across systems."
+                      }
+                    , { name = "GesundenPlaner"
+                      , role = "Full Stack Developer (Backend + Admin Panel)"
+                      , technologies = [ "Node.js", "Nest.js", "TypeScript", "PostgreSQL", "Cloudinary", "Sendgrid", "Azure Devops", "Angular11" ]
+                      , description =
+                            "Service for the selection of exercises for the physical diagnosis and treatment of musculoskeletal system diseases."
+                                ++ "Admin panel implementation, RestAPI implementation for mobile applications, and Web interface. Role models, algorithms for selecting"
+                                ++ "exercise programs for patients, user profiles, authorization, registration, and the entire backend were implemented."
+                      }
+                    , {
+                        name = "Students"
+                        ,role = "Lead Frontend Developer"
+                        , technologies = ["Angular 11", "ngx-zorro", "openapi-generator", "TypeScript", "GitLab CI/CD"]
+                        , description = "The one-of-the-largest-university-in-the-country platform for the digitalization of work processes with students. Within the platform framework, the tasks of students signing in, planning, booking and paying for accommodation were solved."
+                    }
+                    ]
                 ]
 
+        -- [ text "Projects section is under development 🚧"
+        -- ]
         "/skills" ->
             pageContent "Skills"
                 [ text "Short overview of my skills and technologies I employ in my daily work:"
@@ -100,8 +126,7 @@ showPageContent url =
         "/contact" ->
             pageContent "Contact info"
                 [ ul []
-                    [
-                      li [] [ i [ class "fa fa-fw fa-map-marker text-red-500" ] [], text " Armenia, Yerevan" ]
+                    [ li [] [ i [ class "fa fa-fw fa-map-marker text-red-500" ] [], text " Armenia, Yerevan" ]
                     , li [] [ i [ class "fa fa-fw fa-telegram text-[#27A7E7]" ] [], a [ href "https://t.me/akim1995", target "_blank" ] [ text " @akim1995" ] ]
                     , li [] [ i [ class "fa fa-fw fa-skype text-[#009EDC]" ] [], a [ href "skype:live:akim.khalitov", target "_blank" ] [ text " live:akim.khalitov" ] ]
                     , li [] [ i [ class "fa fa-fw fa-linkedin text-[#0a66c2]" ] [], a [ href "https://www.linkedin.com/in/akim-khalitov", target "_blank" ] [ text " akim-khalitov" ] ]
