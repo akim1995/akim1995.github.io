@@ -5,13 +5,12 @@ import Browser.Navigation as Nav
 import Components.HeroSection exposing (heroSection)
 import Components.Layout.PageContent exposing (pageContent)
 import Components.Navigation exposing (navigation)
-import Components.ProjectExplanationList exposing (projectExplanationList)
 import Components.TagList exposing (tagList)
-import Html exposing (a, div, h1, i, li, p, section, text, ul)
+import Html exposing (a, div, i, li, p, text, ul)
 import Html.Attributes exposing (class, href, target)
 import Types.Msg exposing (Msg(..))
 import Url
-
+import Components.Pages.Projects.Projects exposing (projectsPage)
 
 
 -- Main
@@ -81,36 +80,7 @@ subscriptions _ =
 showPageContent : Url.Url -> Html.Html Msg
 showPageContent url =
     case url.path of
-        "/projects" ->
-            pageContent "Projects"
-                [ projectExplanationList
-                    [ { name = "ADOAgregation"
-                      , role = "Full Stack Developer"
-                      , technologies = [ "Azure", "Node.js", "Nest.js", "React" ]
-                      , description =
-                            "The project involved the development of a suite of applications and Azure DevOps extensions aimed at consolidating disparate data from Volkswagen A.G branches and sub-contractors into a unified system within the Microsoft Azure infrastructure."
-                                ++ "It encompassed modules for data collection, transformation, and bidirectional synchronization from sources such as Jira, Azure DevOps cloud instances, Azure DevOps Repos, Azure DevOps Boards, and custom systems integrated with Azure DevOps."
-                                ++ "Additionally, the project involved coordinating and providing technical assistance to the data engineering team for efficient management and integration of data across systems."
-                      }
-                    , { name = "GesundenPlaner"
-                      , role = "Full Stack Developer (Backend + Admin Panel)"
-                      , technologies = [ "Node.js", "Nest.js", "TypeScript", "PostgreSQL", "Cloudinary", "Sendgrid", "Azure Devops", "Angular11" ]
-                      , description =
-                            "Service for the selection of exercises for the physical diagnosis and treatment of musculoskeletal system diseases."
-                                ++ "Admin panel implementation, RestAPI implementation for mobile applications, and Web interface. Role models, algorithms for selecting"
-                                ++ "exercise programs for patients, user profiles, authorization, registration, and the entire backend were implemented."
-                      }
-                    , {
-                        name = "Students"
-                        ,role = "Lead Frontend Developer"
-                        , technologies = ["Angular 11", "ngx-zorro", "openapi-generator", "TypeScript", "GitLab CI/CD"]
-                        , description = "The one-of-the-largest-university-in-the-country platform for the digitalization of work processes with students. Within the platform framework, the tasks of students signing in, planning, booking and paying for accommodation were solved."
-                    }
-                    ]
-                ]
-
-        -- [ text "Projects section is under development 🚧"
-        -- ]
+        "/projects" -> projectsPage
         "/skills" ->
             pageContent "Skills"
                 [ text "Short overview of my skills and technologies I employ in my daily work:"

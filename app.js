@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.J.z === region.R.z)
+	if (region.N.z === region.U.z)
 	{
-		return 'on line ' + region.J.z;
+		return 'on line ' + region.N.z;
 	}
-	return 'on lines ' + region.J.z + ' through ' + region.R.z;
+	return 'on lines ' + region.N.z + ' through ' + region.U.z;
 }
 
 
@@ -2720,8 +2720,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		o: func(record.o),
-		K: record.K,
-		H: record.H
+		O: record.O,
+		L: record.L
 	}
 });
 
@@ -2990,10 +2990,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.o;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.K;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.O;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.H) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.L) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3983,7 +3983,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 		impl.aY,
 		impl.aU,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.I && impl.I(sendToApp)
+			var divertHrefToApp = impl.M && impl.M(sendToApp)
 			var view = impl.aZ;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
@@ -4058,7 +4058,7 @@ function _Browser_application(impl)
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		I: function(sendToApp)
+		M: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ae === next.ae
-							&& curr.W === next.W
-							&& curr.ab.a === next.ab.a
+							&& curr.ag === next.ag
+							&& curr.Z === next.Z
+							&& curr.ad.a === next.ad.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		al: _Browser_getScene(),
+		am: _Browser_getScene(),
 		ar: {
 			at: _Browser_window.pageXOffset,
 			au: _Browser_window.pageYOffset,
 			as: _Browser_doc.documentElement.clientWidth,
-			V: _Browser_doc.documentElement.clientHeight
+			Y: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4263,7 +4263,7 @@ function _Browser_getScene()
 	var elem = _Browser_doc.documentElement;
 	return {
 		as: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		V: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		Y: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			al: {
+			am: {
 				as: node.scrollWidth,
-				V: node.scrollHeight
+				Y: node.scrollHeight
 			},
 			ar: {
 				at: node.scrollLeft,
 				au: node.scrollTop,
 				as: node.clientWidth,
-				V: node.clientHeight
+				Y: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			al: _Browser_getScene(),
+			am: _Browser_getScene(),
 			ar: {
 				at: x,
 				au: y,
 				as: _Browser_doc.documentElement.clientWidth,
-				V: _Browser_doc.documentElement.clientHeight
+				Y: _Browser_doc.documentElement.clientHeight
 			},
 			aC: {
 				at: x + rect.left,
 				au: y + rect.top,
 				as: rect.width,
-				V: rect.height
+				Y: rect.height
 			}
 		};
 	});
@@ -4880,7 +4880,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {T: fragment, W: host, aM: path, ab: port_, ae: protocol, af: query};
+		return {W: fragment, Z: host, aM: path, ad: port_, ag: protocol, ah: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5161,7 +5161,7 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$application = _Browser_application;
 var $author$project$Main$Model = F2(
 	function (key, url) {
-		return {X: key, L: url};
+		return {_: key, P: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
@@ -5200,7 +5200,7 @@ var $elm$url$Url$addPrefixed = F3(
 	});
 var $elm$url$Url$toString = function (url) {
 	var http = function () {
-		var _v0 = url.ae;
+		var _v0 = url.ag;
 		if (!_v0) {
 			return 'http://';
 		} else {
@@ -5210,16 +5210,16 @@ var $elm$url$Url$toString = function (url) {
 	return A3(
 		$elm$url$Url$addPrefixed,
 		'#',
-		url.T,
+		url.W,
 		A3(
 			$elm$url$Url$addPrefixed,
 			'?',
-			url.af,
+			url.ah,
 			_Utils_ap(
 				A2(
 					$elm$url$Url$addPort,
-					url.ab,
-					_Utils_ap(http, url.W)),
+					url.ad,
+					_Utils_ap(http, url.Z)),
 				url.aM)));
 };
 var $author$project$Main$update = F2(
@@ -5232,7 +5232,7 @@ var $author$project$Main$update = F2(
 					model,
 					A2(
 						$elm$browser$Browser$Navigation$pushUrl,
-						model.X,
+						model._,
 						$elm$url$Url$toString(url)));
 			} else {
 				var href = urlRequest.a;
@@ -5245,7 +5245,7 @@ var $author$project$Main$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{L: url}),
+					{P: url}),
 				$elm$core$Platform$Cmd$none);
 		}
 	});
@@ -5495,7 +5495,7 @@ var $author$project$Components$ProjectExplanationList$projectExplanation = funct
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(project.Z)
+						$elm$html$Html$text(project.F)
 					])),
 				A2(
 				$elm$html$Html$h3,
@@ -5505,7 +5505,7 @@ var $author$project$Components$ProjectExplanationList$projectExplanation = funct
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(project.ak)
+						$elm$html$Html$text(project.G)
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5515,7 +5515,7 @@ var $author$project$Components$ProjectExplanationList$projectExplanation = funct
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Description: ' + project.Q)
+						$elm$html$Html$text('Description: ' + project.E)
 					])),
 				A2(
 				$elm$html$Html$div,
@@ -5523,7 +5523,7 @@ var $author$project$Components$ProjectExplanationList$projectExplanation = funct
 				_List_fromArray(
 					[
 						$elm$html$Html$text('Technologies used: '),
-						$author$project$Components$TagList$tagList(project.ap)
+						$author$project$Components$TagList$tagList(project.H)
 					]))
 			]));
 };
@@ -5536,42 +5536,50 @@ var $author$project$Components$ProjectExplanationList$projectExplanationList = f
 			]),
 		A2($elm$core$List$map, $author$project$Components$ProjectExplanationList$projectExplanation, projects));
 };
+var $author$project$Components$Pages$Projects$Projects$projectsData = _List_fromArray(
+	[
+		{
+		E: 'The project involved the development of a suite of applications and Azure DevOps extensions aimed at consolidating disparate data from Volkswagen A.G branches and sub-contractors into a unified system within the Microsoft Azure infrastructure.' + (' It encompassed modules for data collection, transformation, and bidirectional synchronization from sources such as Jira, Azure DevOps cloud instances, Azure DevOps Repos, Azure DevOps Boards, and custom systems integrated with Azure DevOps.' + ' Additionally, the project involved coordinating and providing technical assistance to the data engineering team for efficient management and integration of data across systems.'),
+		F: 'ADOAgregation',
+		G: 'Full Stack Developer',
+		H: _List_fromArray(
+			['Azure', 'Node.js', 'Nest.js', 'React'])
+	},
+		{
+		E: 'Service for the selection of exercises for the physical diagnosis and treatment of musculoskeletal system diseases.' + ('Admin panel implementation, RestAPI implementation for mobile applications, and Web interface. Role models, algorithms for selecting' + 'exercise programs for patients, user profiles, authorization, registration, and the entire backend were implemented.'),
+		F: 'GesundenPlaner',
+		G: 'Full Stack Developer (Backend + Admin Panel)',
+		H: _List_fromArray(
+			['Node.js', 'Nest.js', 'TypeScript', 'PostgreSQL', 'Cloudinary', 'Sendgrid', 'Azure Devops', 'Angular11'])
+	},
+		{
+		E: 'The one-of-the-largest-university-in-the-country platform for the digitalization of work processes with students. Within the platform framework, the tasks of students signing in, planning, booking and paying for accommodation were solved.',
+		F: 'Students',
+		G: 'Lead Frontend Developer',
+		H: _List_fromArray(
+			['Angular 11', 'ngx-zorro', 'openapi-generator', 'TypeScript', 'GitLab CI/CD'])
+	},
+		{
+		E: 'This project involved a comprehensive revamp of an eCommerce site, ' + ('transitioning from PHP CMS to Vue.js and Nuxt.js with SSR. ' + ('It featured custom components and a separate landing app ' + ('heavily utilizing Vue-built web components. ' + ('Yandex Maps was integrated for informational purposes. ' + ('The back-end was modernized with a new C# REST API, ' + ('improving system efficiency. ' + ('Additionally, an Elasticsearch engine was incorporated, ' + ('providing fast and efficient search functionality, ' + 'enhancing the overall user experience.')))))))),
+		F: 'Trans Starter',
+		G: 'Frontend Developer / Partly Backend Developer',
+		H: _List_fromArray(
+			['Vue', 'Nuxt', 'SSR', 'TypeScript', 'PHP', 'C#', 'Nginx', 'Microsoft SQL Server', 'Webcomponents', 'Yandex Maps', 'Elasticsearch', 'Azure'])
+	}
+	]);
+var $author$project$Components$Pages$Projects$Projects$projectsPage = A2(
+	$author$project$Components$Layout$PageContent$pageContent,
+	'Projects',
+	_List_fromArray(
+		[
+			$author$project$Components$ProjectExplanationList$projectExplanationList($author$project$Components$Pages$Projects$Projects$projectsData)
+		]));
 var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
 var $author$project$Main$showPageContent = function (url) {
 	var _v0 = url.aM;
 	switch (_v0) {
 		case '/projects':
-			return A2(
-				$author$project$Components$Layout$PageContent$pageContent,
-				'Projects',
-				_List_fromArray(
-					[
-						$author$project$Components$ProjectExplanationList$projectExplanationList(
-						_List_fromArray(
-							[
-								{
-								Q: 'The project involved the development of a suite of applications and Azure DevOps extensions aimed at consolidating disparate data from Volkswagen A.G branches and sub-contractors into a unified system within the Microsoft Azure infrastructure.' + ('It encompassed modules for data collection, transformation, and bidirectional synchronization from sources such as Jira, Azure DevOps cloud instances, Azure DevOps Repos, Azure DevOps Boards, and custom systems integrated with Azure DevOps.' + 'Additionally, the project involved coordinating and providing technical assistance to the data engineering team for efficient management and integration of data across systems.'),
-								Z: 'ADOAgregation',
-								ak: 'Full Stack Developer',
-								ap: _List_fromArray(
-									['Azure', 'Node.js', 'Nest.js', 'React'])
-							},
-								{
-								Q: 'Service for the selection of exercises for the physical diagnosis and treatment of musculoskeletal system diseases.' + ('Admin panel implementation, RestAPI implementation for mobile applications, and Web interface. Role models, algorithms for selecting' + 'exercise programs for patients, user profiles, authorization, registration, and the entire backend were implemented.'),
-								Z: 'GesundenPlaner',
-								ak: 'Full Stack Developer (Backend + Admin Panel)',
-								ap: _List_fromArray(
-									['Node.js', 'Nest.js', 'TypeScript', 'PostgreSQL', 'Cloudinary', 'Sendgrid', 'Azure Devops', 'Angular11'])
-							},
-								{
-								Q: 'The one-of-the-largest-university-in-the-country platform for the digitalization of work processes with students. Within the platform framework, the tasks of students signing in, planning, booking and paying for accommodation were solved.',
-								Z: 'Students',
-								ak: 'Lead Frontend Developer',
-								ap: _List_fromArray(
-									['Angular 11', 'ngx-zorro', 'openapi-generator', 'TypeScript', 'GitLab CI/CD'])
-							}
-							]))
-					]));
+			return $author$project$Components$Pages$Projects$Projects$projectsPage;
 		case '/skills':
 			return A2(
 				$author$project$Components$Layout$PageContent$pageContent,
@@ -5728,7 +5736,7 @@ var $author$project$Main$view = function (model) {
 					[
 						$author$project$Components$HeroSection$heroSection,
 						$author$project$Components$Navigation$navigation,
-						$author$project$Main$showPageContent(model.L)
+						$author$project$Main$showPageContent(model.P)
 					]))
 			]),
 		aX: 'Akim Khalitov - Web Developer'
