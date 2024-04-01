@@ -137,6 +137,11 @@ homePageView =
                 "Originally from Russia, I have since moved to Armenia following the events of February 2022. "
                     ++ "I am always open to new opportunities, collaborations, and meaningful conversations. If you would like to get in touch, please check out my contact info"
             , a [ href "/contact" ] [ text " here" ]
-            , text "."
+            , text ". "
+            ]
+        , p [ class "text-lg" ]
+            [ text "Additionally, you can download my CV as a "
+            , a [ href "https://akim1995.github.io/cv/cv.pdf", target "_blank" ] [ text "PDF file"]
+            , text ". "
             ]
         ]
