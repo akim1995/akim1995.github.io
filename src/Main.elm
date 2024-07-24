@@ -123,7 +123,7 @@ homePageView =
         , p [ class "text-lg" ]
             [ text <|
                 "Over the years I gained experience in multiple frontend frameworks such as Vue.js, Angular, React, and Elm. "
-                    ++ "I have also embraced functional programming concepts, particularly through Elm and Haskell."
+                    ++ "I have also embraced functional programming concepts, particularly through Haskell and Clojure."
                     ++ "By leveraging composition techniques, utilizing pure functions, and employing monads and Algebraic data structures, "
                     ++ "I have effectively introduced functional programming principles into JavaScript codebases. "
                     ++ "This gradual adoption of functional programming concepts was done with caution, considering "
