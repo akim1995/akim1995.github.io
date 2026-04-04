@@ -1,29 +1,35 @@
 module Components.Navigation exposing (navigation)
 
-import Html exposing (a, div, li, nav, text, ul)
+import Html exposing (a, div, nav)
 import Html.Attributes exposing (class, href)
 
 
-navigation : Html.Html msg
-navigation =
-    nav [ class "bg-gray-500 border-y border-gray-600" ]
-        [ div [ class "container mx-auto" ]
-            [ ul [ class "flex items-center gap-4 sm:gap-6 justify-center py-3" ]
-                (List.map listItemLink
-                    [ ( "About", "/" )
-                    , ( "Projects", "/projects" )
-                    , ( "Skills", "/skills" )
-                    , ( "Experience", "/experience" )
-                    , ( "Contact", "/contact" )
-                    ]
-                )
-            ]
+navigation : String -> Html.Html msg
+navigation currentPath =
+    nav [ class "tab-bar" ]
+        [ div [ class "flex" ]
+            (List.map (tabLink currentPath)
+                [ ( "About", "/" )
+                , ( "Experience", "/experience" )
+                , ( "Projects", "/projects" )
+                , ( "Skills", "/skills" )
+                , ( "Bookshelf", "/bookshelf" )
+                ]
+            )
         ]
 
 
-listItemLink : ( String, String ) -> Html.Html msg
-listItemLink ( linkText, url ) =
-    li []
-        [ a [ class "header-link", href url ]
-            [ text linkText ]
-        ]
+tabLink : String -> ( String, String ) -> Html.Html msg
+tabLink currentPath ( label, url ) =
+    let
+        isActive =
+            currentPath == url || (url == "/" && (currentPath == "" || currentPath == "/"))
+
+        linkClass =
+            if isActive then
+                "tab-link-active"
+
+            else
+                "tab-link"
+    in
+    a [ class linkClass, href url ] [ Html.text label ]

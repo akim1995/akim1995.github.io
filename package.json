@@ -7,7 +7,7 @@
     "serve": "servor",
     "elm:watch": "elm-watch hot",
     "elm:build": "elm-watch make --optimize",
-    "elm:compress": "uglifyjs app.js --compress \"pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,keep_fargs=false,unsafe_comps,unsafe\" | uglifyjs --mangle --output app.js",
+    "elm:compress": "./node_modules/.bin/uglifyjs app.js --compress \"pure_funcs=[F2,F3,F4,F5,F6,F7,F8,F9,A2,A3,A4,A5,A6,A7,A8,A9],pure_getters,keep_fargs=false,unsafe_comps,unsafe\" | ./node_modules/.bin/uglifyjs --mangle --output app.js",
     "tailwind:watch": "tailwindcss -i ./src/main.css -o styles.css --watch",
     "tailwind:build": "tailwindcss -i ./src/main.css -o styles.css --minify",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +24,11 @@
   "homepage": "https://github.com/akim1995/akim1995.github.io#readme",
   "dependencies": {
     "elm-watch": "^1.1.2",
-    "servor": "^4.0.2"
+    "servor": "^4.0.2",
+    "uglifyjs": "^2.4.11"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19",
+    "uglify-js": "^3.19.3"
   }
 }

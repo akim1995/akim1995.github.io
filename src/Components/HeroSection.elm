@@ -1,14 +1,18 @@
 module Components.HeroSection exposing (heroSection)
 
-import Html exposing (div, header, text)
+import Html exposing (div, header, span, text)
 import Html.Attributes exposing (class)
-import Types.Msg exposing (Msg(..))
+import Types.Msg exposing (Msg)
 
-heroSection : Html.Html msg
+
+heroSection : Html.Html Msg
 heroSection =
-    header [ class "bg-blue-400 py-10" ]
-        [ div [ class "xl:container mx-auto px-8" ]
-            [ div [ class "text-4xl font-bold text-white" ] [ text "Akim Khalitov" ] 
-            , div [ class "text-xl text-white" ] [ text "Web Developer JS/TS/Node. Clojure, Haskell and Elm as a hobby" ]
+    header [ class "modeline" ]
+        [ div [ class "modeline-inner" ]
+            [ span [ class "modeline-sep" ] [ text "--" ]
+            , span [ class "modeline-name" ] [ text " Akim Khalitov " ]
+            , span [ class "modeline-sep" ] [ text "::" ]
+            , span [ class "modeline-role" ] [ text " Full Stack Developer · JS · TS · React · Clojure " ]
+            , span [ class "modeline-sep" ] [ text "--" ]
             ]
         ]

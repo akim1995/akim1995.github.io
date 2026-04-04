@@ -14,39 +14,40 @@ projectsPage =
 
 projectsData : List Project
 projectsData =
-    [ { name = "ADOAgregation"
-      , role = "Full Stack Developer"
-      , technologies = [ "Azure", "Node.js", "Nest.js", "React" ]
+    [ { name = "Episode Tool"
+      , role = "Clojure Engineer — Health Samurai"
+      , technologies = [ "Clojure", "ClojureScript", "FHIR", "PostgreSQL", "GCP" ]
       , description =
-            "The project involved the development of a suite of applications and Azure DevOps extensions aimed at consolidating disparate data from Volkswagen A.G branches and sub-contractors into a unified system within the Microsoft Azure infrastructure."
-                ++ " It encompassed modules for data collection, transformation, and bidirectional synchronization from sources such as Jira, Azure DevOps cloud instances, Azure DevOps Repos, Azure DevOps Boards, and custom systems integrated with Azure DevOps."
-                ++ " Additionally, the project involved coordinating and providing technical assistance to the data engineering team for efficient management and integration of data across systems."
+            "Application for PCPs and care centers to manage patient episodes and coordinate value-based healthcare workflows, built on top of the Aidbox FHIR platform."
+      }
+    , { name = "Patient Research Platform"
+      , role = "Full Stack Developer — H4 Customized Software"
+      , technologies = [ "React", "TypeScript", "Node.js", "Java", "PostgreSQL", "Azure" ]
+      , description =
+            "Platform for aggregating patient data to support disease research. Includes a web interface for doctors to fill in questionnaires and query the aggregated dataset."
+      }
+    , { name = "ADOAggregation"
+      , role = "Full Stack Developer — KL TECH"
+      , technologies = [ "React", "Node.js", "Nest.js", "TypeScript", "Azure", "PostgreSQL" ]
+      , description =
+            "Suite of Azure DevOps extensions and microservices consolidating data from Jira, Azure DevOps cloud instances, and custom systems across Volkswagen AG branches and sub-contractors."
       }
     , { name = "GesundenPlaner"
-      , role = "Full Stack Developer (Backend + Admin Panel)"
-      , technologies = [ "Node.js", "Nest.js", "TypeScript", "PostgreSQL", "Cloudinary", "Sendgrid", "Azure Devops", "Angular11" ]
+      , role = "Full Stack Developer — Konig Labs"
+      , technologies = [ "Angular", "Nest.js", "TypeScript", "PostgreSQL", "Cloudinary", "SendGrid", "Azure" ]
       , description =
-            "Service for the selection of exercises for the physical diagnosis and treatment of musculoskeletal system diseases."
-                ++ "Admin panel implementation, RestAPI implementation for mobile applications, and Web interface. Role models, algorithms for selecting"
-                ++ "exercise programs for patients, user profiles, authorization, registration, and the entire backend were implemented."
+            "Service for selecting exercises for the physical diagnosis and treatment of musculoskeletal system diseases. Includes REST API, admin panel, role models, and exercise-selection algorithms."
       }
     , { name = "Students"
-      , role = "Lead Frontend Developer"
-      , technologies = [ "Angular 11", "ngx-zorro", "openapi-generator", "TypeScript", "GitLab CI/CD" ]
-      , description = "The one-of-the-largest-university-in-the-country platform for the digitalization of work processes with students. Within the platform framework, the tasks of students signing in, planning, booking and paying for accommodation were solved."
+      , role = "Lead Frontend Developer — Konig Labs"
+      , technologies = [ "Angular", "TypeScript", "OpenAPI Generator", "GitLab CI/CD" ]
+      , description =
+            "Digitalization platform for one of the country's largest universities, handling student sign-in, planning, accommodation booking, and payments."
       }
     , { name = "Trans Starter"
-      , role = "Frontend Developer / Partly Backend Developer"
-      , technologies = [ "Vue", "Nuxt", "SSR", "TypeScript", "PHP", "C#", "Nginx", "Microsoft SQL Server", "Webcomponents", "Yandex Maps", "Elasticsearch", "Azure" ]
-      , description = "This project involved a comprehensive revamp of an eCommerce site, "
-          ++ "transitioning from PHP CMS to Vue.js and Nuxt.js with SSR. "
-          ++ "It featured custom components and a separate landing app "
-          ++ "heavily utilizing Vue-built web components. "
-          ++ "Yandex Maps was integrated for informational purposes. "
-          ++ "The back-end was modernized with a new C# REST API, "
-          ++ "improving system efficiency. "
-          ++ "Additionally, an Elasticsearch engine was incorporated, "
-          ++ "providing fast and efficient search functionality, "
-          ++ "enhancing the overall user experience."
+      , role = "Frontend / Backend Developer — Konig Labs"
+      , technologies = [ "Vue.js", "Nuxt.js", "TypeScript", "SSR", "Web Components", "Elasticsearch", "C#", "Nginx", "MSSQL" ]
+      , description =
+            "Full eCommerce site migration from PHP CMS to Vue.js/Nuxt.js with SSR. Integrated Elasticsearch for product search, built a Web Components landing, and modernized the backend with a C# REST API."
       }
     ]
