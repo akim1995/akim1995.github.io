@@ -9,8 +9,8 @@ import Components.Pages.Bookshelf.Bookshelf exposing (bookshelfPage)
 import Components.Pages.Experience.Experience exposing (experiencePage)
 import Components.Pages.Projects.Projects exposing (projectsPage)
 import Components.TagList exposing (tagList)
-import Html exposing (a, div, li, p, span, strong, text, ul)
-import Html.Attributes exposing (attribute, class, href, target)
+import Html exposing (a, div, img, li, p, span, strong, text, ul)
+import Html.Attributes exposing (alt, attribute, class, href, src, target)
 import Types.Msg exposing (Msg(..))
 import Url
 
@@ -99,12 +99,17 @@ hl s =
 aboutPage : Html.Html Msg
 aboutPage =
     pageContent "About"
-        [ p []
-            [ text "Full Stack Developer with 6+ years of production experience. Currently working as a Clojure Engineer at "
-            , strong [] [ text "Health Samurai" ]
-            , text ", building medtech infrastructure around "
-            , hl "FHIR"
-            , text ", HL7v2, and X12."
+        [ div [ class "about-intro" ]
+            [ img [ class "about-avatar", src "https://github.com/akim1995.png?size=160", alt "Akim Khalitov" ] []
+            , p [ class "about-intro-p" ]
+                [ text "Full Stack Developer ("
+                , hl "Clojure"
+                , text " · "
+                , hl "TypeScript"
+                , text ") with 6+ years across healthcare, enterprise, and eCommerce. Currently a Clojure Engineer at "
+                , strong [] [ text "Health Samurai" ]
+                , text ", building medtech infrastructure around FHIR, HL7v2, and X12."
+                ]
             ]
         , p []
             [ text "I work across the full stack: "
@@ -126,6 +131,13 @@ aboutPage =
             [ text "Previously shipped across: "
             , hl "enterprise data integration"
             , text ", healthcare, eCommerce, and education."
+            ]
+        , p []
+            [ text "Always happy to connect — reach out via "
+            , a [ href "mailto:akim.khalitov.ya@gmail.com" ] [ text "Email" ]
+            , text " or "
+            , a [ href "https://www.linkedin.com/in/akim-khalitov", target "_blank" ] [ text "LinkedIn" ]
+            , text "."
             ]
         ]
 
@@ -156,7 +168,9 @@ statusBar : Html.Html Msg
 statusBar =
     Html.node "footer"
         [ class "status-bar" ]
-        [ statusLink "akim.khalitov.ya@gmail.com" "mailto:akim.khalitov.ya@gmail.com" ""
+        [ span [] [ text "Remote / Yerevan" ]
+        , span [ class "status-sep" ] [ text " · " ]
+        , statusLink "akim.khalitov.ya@gmail.com" "mailto:akim.khalitov.ya@gmail.com" ""
         , span [ class "status-sep" ] [ text " · " ]
         , statusLink "Telegram: @akim1995" "https://t.me/akim1995" "_blank"
         , span [ class "status-sep" ] [ text " · " ]
