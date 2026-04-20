@@ -1,6 +1,6 @@
 # This Time, the Layer That Moved Is the Code
 
-Assemblers were faster at writing binary than humans. Compilers were faster at writing assembly. AI is faster at writing code than programmers. We, programmers, have been through this before. But none of them went after the code itself.
+Assemblers were faster at writing binary than humans. Compilers were faster at writing assembly. AI is faster at writing code than programmers. We, programmers, have been through this before. But none of those leaps went after the code itself.
 
 Each time, the layer moves up. Each time, the work we knew became the floor the next thing stood on. We spent years learning what the machine was doing and why. Then everything we put into our heads got put into a model. The knowledge did not disappear. It just stopped being scarce. That is a strange thing to sit with.
 
