@@ -8,10 +8,13 @@ import Components.Navigation exposing (navigation)
 import Components.Pages.Bookshelf.Bookshelf exposing (bookshelfPage)
 import Components.Pages.Experience.Experience exposing (experiencePage)
 import Components.Pages.Projects.Projects exposing (projectsPage)
+import Components.Pages.Thoughts.Thoughts exposing (thoughtsPage)
 import Components.TagList exposing (tagList)
-import Html exposing (a, div, img, li, p, span, strong, text, ul)
-import Html.Attributes exposing (alt, attribute, class, href, src, target)
+import Html exposing (Html, a, div, img, p, span, strong, text)
+import Html.Attributes exposing (alt, class, href, src, target)
+import Http
 import Types.Msg exposing (Msg(..))
+import Types.Thought exposing (ThoughtMeta, ThoughtsState(..), getList, manifestDecoder)
 import Url
 
 
@@ -30,12 +33,56 @@ main =
 type alias Model =
     { key : Nav.Key
     , url : Url.Url
+    , thoughts : ThoughtsState
     }
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init _ url key =
-    ( Model key url, Cmd.none )
+    let
+        ( thoughts, cmd ) =
+            case thoughtsRoute url.path of
+                OnList ->
+                    ( LoadingManifest Nothing, fetchManifest )
+
+                OnThought slug ->
+                    ( LoadingManifest (Just slug), fetchManifest )
+
+                NotThoughts ->
+                    ( Idle, Cmd.none )
+    in
+    ( { key = key, url = url, thoughts = thoughts }, cmd )
+
+
+type ThoughtsRoute
+    = OnList
+    | OnThought String
+    | NotThoughts
+
+
+thoughtsRoute : String -> ThoughtsRoute
+thoughtsRoute path =
+    if path == "/thoughts" then
+        OnList
+
+    else if String.startsWith "/thoughts/" path then
+        let
+            slug =
+                String.dropLeft 10 path
+        in
+        if String.isEmpty slug then
+            OnList
+
+        else
+            OnThought slug
+
+    else
+        NotThoughts
+
+
+findBySlug : String -> List ThoughtMeta -> Maybe ThoughtMeta
+findBySlug slug =
+    List.head << List.filter (\m -> m.slug == slug)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -50,12 +97,117 @@ update msg model =
                     ( model, Nav.load href )
 
         UrlChanged url ->
-            ( { model | url = url }, Cmd.none )
+            let
+                ( newThoughts, cmd ) =
+                    case thoughtsRoute url.path of
+                        NotThoughts ->
+                            ( model.thoughts, Cmd.none )
+
+                        OnList ->
+                            case model.thoughts of
+                                Idle ->
+                                    ( LoadingManifest Nothing, fetchManifest )
+
+                                Failed _ ->
+                                    ( LoadingManifest Nothing, fetchManifest )
+
+                                ThoughtLoaded list _ _ ->
+                                    ( ManifestLoaded list, Cmd.none )
+
+                                LoadingThought list _ ->
+                                    ( ManifestLoaded list, Cmd.none )
+
+                                other ->
+                                    ( other, Cmd.none )
+
+                        OnThought slug ->
+                            case model.thoughts of
+                                Idle ->
+                                    ( LoadingManifest (Just slug), fetchManifest )
+
+                                Failed _ ->
+                                    ( LoadingManifest (Just slug), fetchManifest )
+
+                                LoadingManifest _ ->
+                                    ( LoadingManifest (Just slug), Cmd.none )
+
+                                ManifestLoaded list ->
+                                    fetchSlug slug list
+
+                                LoadingThought list _ ->
+                                    fetchSlug slug list
+
+                                ThoughtLoaded list _ _ ->
+                                    fetchSlug slug list
+            in
+            ( { model | url = url, thoughts = newThoughts }, cmd )
+
+        GotManifest result ->
+            case result of
+                Ok list ->
+                    case model.thoughts of
+                        LoadingManifest (Just slug) ->
+                            let
+                                ( newThoughts, cmd ) =
+                                    fetchSlug slug list
+                            in
+                            ( { model | thoughts = newThoughts }, cmd )
+
+                        _ ->
+                            ( { model | thoughts = ManifestLoaded list }, Cmd.none )
+
+                Err _ ->
+                    ( { model | thoughts = Failed "Could not load thoughts." }, Cmd.none )
+
+        OpenThought meta ->
+            ( model, Nav.pushUrl model.key ("/thoughts/" ++ meta.slug) )
+
+        GotThought result ->
+            case result of
+                Ok content ->
+                    case model.thoughts of
+                        LoadingThought list meta ->
+                            ( { model | thoughts = ThoughtLoaded list meta content }, Cmd.none )
+
+                        _ ->
+                            ( model, Cmd.none )
+
+                Err _ ->
+                    ( { model | thoughts = Failed "Could not load thought content." }, Cmd.none )
+
+        CloseThought ->
+            ( model, Nav.pushUrl model.key "/thoughts" )
+
+
+fetchSlug : String -> List ThoughtMeta -> ( ThoughtsState, Cmd Msg )
+fetchSlug slug list =
+    case findBySlug slug list of
+        Just meta ->
+            ( LoadingThought list meta, fetchThought meta )
+
+        Nothing ->
+            ( Failed ("Not found: " ++ slug), Cmd.none )
 
 
 subscriptions : Model -> Sub Msg
 subscriptions _ =
     Sub.none
+
+
+fetchManifest : Cmd Msg
+fetchManifest =
+    Http.get
+        { url = "/thoughts/manifest.json"
+        , expect = Http.expectJson GotManifest manifestDecoder
+        }
+
+
+fetchThought : ThoughtMeta -> Cmd Msg
+fetchThought meta =
+    Http.get
+        { url = "/thoughts/" ++ meta.slug ++ ".md"
+        , expect = Http.expectString GotThought
+        }
 
 
 view : Model -> Browser.Document Msg
@@ -65,38 +217,46 @@ view model =
         [ div [ class "page-root" ]
             [ heroSection
             , navigation model.url.path
-            , showPageContent model.url
+            , showPageContent model
             , statusBar
             ]
         ]
     }
 
 
-showPageContent : Url.Url -> Html.Html Msg
-showPageContent url =
-    case url.path of
-        "/experience" ->
-            experiencePage
+showPageContent : Model -> Html Msg
+showPageContent model =
+    case thoughtsRoute model.url.path of
+        OnList ->
+            thoughtsPage model.thoughts
 
-        "/projects" ->
-            projectsPage
+        OnThought _ ->
+            thoughtsPage model.thoughts
 
-        "/skills" ->
-            skillsPage
+        NotThoughts ->
+            case model.url.path of
+                "/experience" ->
+                    experiencePage
 
-        "/bookshelf" ->
-            bookshelfPage
+                "/projects" ->
+                    projectsPage
 
-        _ ->
-            aboutPage
+                "/skills" ->
+                    skillsPage
+
+                "/bookshelf" ->
+                    bookshelfPage
+
+                _ ->
+                    aboutPage
 
 
-hl : String -> Html.Html msg
+hl : String -> Html msg
 hl s =
     span [ class "hl" ] [ text s ]
 
 
-aboutPage : Html.Html Msg
+aboutPage : Html Msg
 aboutPage =
     pageContent "About"
         [ div [ class "about-intro" ]
@@ -142,7 +302,7 @@ aboutPage =
         ]
 
 
-skillsPage : Html.Html Msg
+skillsPage : Html Msg
 skillsPage =
     pageContent "Skills"
         [ skillGroup "Core"
@@ -156,7 +316,7 @@ skillsPage =
         ]
 
 
-skillGroup : String -> List String -> Html.Html Msg
+skillGroup : String -> List String -> Html Msg
 skillGroup label skills =
     div [ class "skill-group" ]
         [ div [ class "skill-group-label" ] [ text label ]
@@ -164,7 +324,7 @@ skillGroup label skills =
         ]
 
 
-statusBar : Html.Html Msg
+statusBar : Html Msg
 statusBar =
     Html.node "footer"
         [ class "status-bar" ]
@@ -180,7 +340,7 @@ statusBar =
         ]
 
 
-statusLink : String -> String -> String -> Html.Html Msg
+statusLink : String -> String -> String -> Html Msg
 statusLink label url tgt =
     let
         attrs =

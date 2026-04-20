@@ -394,4 +394,131 @@
     margin-top: 0.25rem;
   }
 
+  /* ── Thoughts list ───────────────────────────────────────────────────── */
+  .thoughts-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .thought-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+
+  .thought-item:first-child {
+    border-top: 1px solid var(--border);
+  }
+
+  .thought-item:hover .thought-title {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .thought-title {
+    color: var(--fg-main);
+    font-size: 0.9rem;
+    flex: 1;
+  }
+
+  .thought-date {
+    color: var(--fg-comment);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── Thought detail ──────────────────────────────────────────────────── */
+  .thought-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .thought-back {
+    color: var(--fg-comment);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0;
+    transition: color 0.15s;
+  }
+
+  .thought-back::before {
+    content: '< ';
+  }
+
+  .thought-back:hover {
+    color: var(--accent);
+  }
+
+  .thought-updated {
+    color: var(--fg-comment);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+  }
+
+  .thought-content h1 {
+    display: none;
+  }
+
+  .thought-content p {
+    color: var(--fg-dim);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .thought-content a {
+    color: var(--accent);
+    text-decoration: underline;
+  }
+
+  .thought-content code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85em;
+    background-color: var(--bg-active);
+    padding: 0.1em 0.35em;
+    border-radius: 2px;
+  }
+
+  .thought-content pre {
+    background-color: var(--bg-dim);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+
+  .thought-content pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.85rem;
+  }
+
+  .thought-content blockquote {
+    border-left: 3px solid var(--border);
+    padding-left: 1rem;
+    color: var(--fg-comment);
+    margin: 1rem 0;
+  }
+
+  /* ── Loading / error ─────────────────────────────────────────────────── */
+  .loading,
+  .error {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--fg-comment);
+  }
+
+  .error {
+    color: #a00;
+  }
+
 }
