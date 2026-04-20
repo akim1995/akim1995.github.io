@@ -14,6 +14,7 @@ navigation currentPath =
                 , ( "Projects", "/projects" )
                 , ( "Skills", "/skills" )
                 , ( "Bookshelf", "/bookshelf" )
+                , ( "Thoughts", "/thoughts" )
                 ]
             )
         ]
@@ -23,7 +24,9 @@ tabLink : String -> ( String, String ) -> Html.Html msg
 tabLink currentPath ( label, url ) =
     let
         isActive =
-            currentPath == url || (url == "/" && (currentPath == "" || currentPath == "/"))
+            currentPath == url
+                || (url == "/" && (currentPath == "" || currentPath == "/"))
+                || (url == "/thoughts" && String.startsWith "/thoughts/" currentPath)
 
         linkClass =
             if isActive then
