@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 160" width="150" height="160">
+  <defs>
+    <pattern id="pb1" patternUnits="userSpaceOnUse" width="7" height="5">
+      <line x1="0" y1="2.5" x2="7" y2="2.5" stroke="#1a1a1a" stroke-width="0.7"/>
+    </pattern>
+    <pattern id="pb2" patternUnits="userSpaceOnUse" width="6" height="6">
+      <line x1="0" y1="6" x2="6" y2="0" stroke="#1a1a1a" stroke-width="0.75"/>
+    </pattern>
+    <pattern id="pb3" patternUnits="userSpaceOnUse" width="6" height="6">
+      <line x1="0" y1="0" x2="6" y2="6" stroke="#1a1a1a" stroke-width="0.6"/>
+      <line x1="6" y1="0" x2="0" y2="6" stroke="#1a1a1a" stroke-width="0.6"/>
+    </pattern>
+    <pattern id="pb4" patternUnits="userSpaceOnUse" width="5" height="7">
+      <line x1="2.5" y1="0" x2="2.5" y2="7" stroke="#1a1a1a" stroke-width="0.75"/>
+    </pattern>
+    <pattern id="pb5" patternUnits="userSpaceOnUse" width="3.5" height="3.5">
+      <line x1="0" y1="0" x2="3.5" y2="3.5" stroke="#1a1a1a" stroke-width="0.55"/>
+      <line x1="3.5" y1="0" x2="0" y2="3.5" stroke="#1a1a1a" stroke-width="0.55"/>
+    </pattern>
+
+    <!-- Annular clip paths using evenodd fill rule -->
+    <!-- cx=75, cy=80. Rings: rx/ry = 70/73, 55/58, 40/43, 26/28, 13/14 -->
+    <clipPath id="cb1">
+      <path fill-rule="evenodd" d="M 5 80 A 70 73 0 1 0 145 80 A 70 73 0 1 0 5 80 Z M 20 80 A 55 58 0 1 0 130 80 A 55 58 0 1 0 20 80 Z"/>
+    </clipPath>
+    <clipPath id="cb2">
+      <path fill-rule="evenodd" d="M 20 80 A 55 58 0 1 0 130 80 A 55 58 0 1 0 20 80 Z M 35 80 A 40 43 0 1 0 115 80 A 40 43 0 1 0 35 80 Z"/>
+    </clipPath>
+    <clipPath id="cb3">
+      <path fill-rule="evenodd" d="M 35 80 A 40 43 0 1 0 115 80 A 40 43 0 1 0 35 80 Z M 49 80 A 26 28 0 1 0 101 80 A 26 28 0 1 0 49 80 Z"/>
+    </clipPath>
+    <clipPath id="cb4">
+      <path fill-rule="evenodd" d="M 49 80 A 26 28 0 1 0 101 80 A 26 28 0 1 0 49 80 Z M 62 80 A 13 14 0 1 0 88 80 A 13 14 0 1 0 62 80 Z"/>
+    </clipPath>
+    <clipPath id="cb5">
+      <path d="M 62 80 A 13 14 0 1 0 88 80 A 13 14 0 1 0 62 80 Z"/>
+    </clipPath>
+  </defs>
+
+  <rect x="0" y="0" width="150" height="160" fill="url(#pb1)" clip-path="url(#cb1)"/>
+  <rect x="0" y="0" width="150" height="160" fill="url(#pb2)" clip-path="url(#cb2)"/>
+  <rect x="0" y="0" width="150" height="160" fill="url(#pb3)" clip-path="url(#cb3)"/>
+  <rect x="0" y="0" width="150" height="160" fill="url(#pb4)" clip-path="url(#cb4)"/>
+  <rect x="0" y="0" width="150" height="160" fill="url(#pb5)" clip-path="url(#cb5)"/>
+
+  <!-- Ring boundaries -->
+  <ellipse cx="75" cy="80" rx="70" ry="73" fill="none" stroke="#1a1a1a" stroke-width="1.2"/>
+  <ellipse cx="75" cy="80" rx="55" ry="58" fill="none" stroke="#1a1a1a" stroke-width="1.0"/>
+  <ellipse cx="75" cy="80" rx="40" ry="43" fill="none" stroke="#1a1a1a" stroke-width="0.9"/>
+  <ellipse cx="75" cy="80" rx="26" ry="28" fill="none" stroke="#1a1a1a" stroke-width="0.8"/>
+  <ellipse cx="75" cy="80" rx="13" ry="14" fill="none" stroke="#1a1a1a" stroke-width="0.7"/>
+
+  <!-- Grain crack -->
+  <line x1="75" y1="80" x2="86" y2="12" stroke="#1a1a1a" stroke-width="0.6" opacity="0.55"/>
+</svg>
