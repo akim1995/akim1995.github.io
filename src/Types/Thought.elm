@@ -9,6 +9,7 @@ type alias ThoughtMeta =
     , topic : String
     , title : String
     , updated : String
+    , illustration : Maybe String
     }
 
 
@@ -49,3 +50,4 @@ thoughtMetaDecoder =
         |> Pipeline.required "topic" Decode.string
         |> Pipeline.required "title" Decode.string
         |> Pipeline.required "updated" Decode.string
+        |> Pipeline.optional "illustration" (Decode.map Just Decode.string) Nothing

@@ -1,8 +1,8 @@
 module Components.Pages.Thoughts.Thoughts exposing (thoughtsPage)
 
 import Components.Layout.PageContent exposing (pageContent)
-import Html exposing (Html, button, div, p, span, text)
-import Html.Attributes exposing (class)
+import Html exposing (Html, button, div, img, p, span, text)
+import Html.Attributes exposing (alt, class, src)
 import Html.Events exposing (onClick)
 import Markdown
 import Types.Msg exposing (Msg(..))
@@ -57,5 +57,14 @@ thoughtDetail meta content =
             [ button [ class "thought-back", onClick CloseThought ] [ text "Thoughts" ]
             , span [ class "thought-updated" ] [ text ("upd. " ++ meta.updated) ]
             ]
-        , Markdown.toHtml [ class "thought-content" ] content
+        , div [ class "thought-body" ]
+            (case meta.illustration of
+                Just ilSrc ->
+                    [ img [ class "thought-illustration", src ("/thoughts/illustrations/" ++ ilSrc), alt "" ] []
+                    , Markdown.toHtml [ class "thought-content" ] content
+                    ]
+
+                Nothing ->
+                    [ Markdown.toHtml [ class "thought-content" ] content ]
+            )
         ]
